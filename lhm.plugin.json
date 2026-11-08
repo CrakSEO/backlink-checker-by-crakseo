@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "author": "CrakSEO",
+  "authorUrl": "https://github.com/CrakSEO",
+  "icon": "https://raw.githubusercontent.com/CrakSEO/crakseo-mcp-plugins/main/seo-tools-by-crakseo/assets/logo.png",
+  "identifier": "crakseo-backlinks",
+  "name": "Backlink Checker: Backlinks, Referring Domains & Anchor Text by CrakSEO",
+  "description": "Backlink checker for SEO: backlinks, referring domains and anchor text for any website or competitor. Link analysis for backlink audits and link building.",
+  "homepage": "https://crakseo.com/mcp/backlinks",
+  "cloudEndpoint": "https://crakseo.com/mcp/backlinks",
+  "tags": [
+    "backlinks",
+    "backlink-checker",
+    "referring-domains"
+  ],
+  "tools": [
+    {
+      "name": "get_api_credit_balance",
+      "description": "Free: API credit balance, availability and pricing for SEO data calls. Call first to confirm the connection.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "check_backlinks",
+      "description": "Backlink checker: total backlinks, referring domains, domain rank, spam score and the strongest backlinks (one per domain) for any domain or URL. Costs API credits per call.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 2048,
+            "description": "Domain (example.com) or full page URL (https://example.com/page) to analyze."
+          },
+          "limit": {
+            "default": 25,
+            "description": "How many top backlinks to list, 1 to 100. Default 25.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "name": "get_referring_domains",
+      "description": "Referring domains: the domains linking to a domain or URL, with their rank, backlink count, spam score and first-seen date, strongest first. Costs API credits per call.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 2048,
+            "description": "Domain (example.com) or full page URL (https://example.com/page) to analyze."
+          },
+          "limit": {
+            "default": 100,
+            "description": "How many referring domains to list, 1 to 500. Default 100.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    },
+    {
+      "name": "get_backlink_anchors",
+      "description": "Backlink anchor texts: the anchors used in links to a domain or URL, with backlink and referring-domain counts per anchor. Costs API credits per call.",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 2048,
+            "description": "Domain (example.com) or full page URL (https://example.com/page) to analyze."
+          },
+          "limit": {
+            "default": 100,
+            "description": "How many anchors to list, 1 to 500. Default 100.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [
+          "target"
+        ]
+      }
+    }
+  ]
+}
